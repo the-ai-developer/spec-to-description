@@ -9,10 +9,23 @@ description = "Spec fields to product copy: a T5 seq2seq, plus the attention and
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-dependencies = ["torch>=2.0", "numpy>=1.24"]
+
+# The core package is torch only, and torch only inside spec2desc/attention.py.
+# beam_search.py and linearise.py are pure standard library on purpose, so they
+# import on a machine with no ML stack at all.
+dependencies = ["torch>=2.0"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0", "pillow>=10.0"]
+# train/ and eval/ shell out to HuggingFace, which used to be undeclared, so
+# `make install` produced an environment that could not fine-tune anything.
+train = ["transformers>=4.30", "sentencepiece>=0.1.99", "numpy>=1.24"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.1",
+    "transformers>=4.30",
+    "sentencepiece>=0.1.99",
+    "numpy>=1.24",
+]
 notebooks = ["jupyter>=1.0"]
 
 [tool.setuptools]

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spec-to-description"
+version = "0.1.0"
+description = "Spec fields to product copy: a T5 seq2seq, plus the attention and beam search written out by hand"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["torch>=2.0", "numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pillow>=10.0"]
+notebooks = ["jupyter>=1.0"]
+
+[tool.setuptools]
+packages = ["spec2desc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

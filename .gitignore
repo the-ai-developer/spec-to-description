@@ -1,0 +1,21 @@
+# generated corpora and checkpoints
+data/generated/
+checkpoints/
+runs/
+*.pt
+*.onnx
+*.faiss
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.egg-info/
+.venv/
+venv/
+
+# notebooks
+.ipynb_checkpoints/
